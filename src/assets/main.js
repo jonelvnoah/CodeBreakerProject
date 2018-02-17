@@ -15,11 +15,11 @@ function guess() {
 
     if(getResults(input)){
       setMessage("You Win! :)");
-      showAnser(true);
+      showAnswer(true);
       showReplay();
     }else if(attempt.value >= 10){
       setMessage("You Lose! :(");
-      showAnser(false);
+      showAnswer(false);
       showReplay();
     }else{
       setMessage("Incorrect, try again.");
@@ -29,7 +29,7 @@ function guess() {
 function setHiddenFields (){
   attempt.value = 0;
   answer.value = Math.floor(Math.random()*10000).toString();
-  while (answer.value.length < 4) {
+  while (answer.length < 4) {
     answer.value  = "0" + answer.value;
   }
 }
@@ -39,7 +39,7 @@ function setMessage (message){
 }
 
 function validateInput(input){
-  if(input.value.length !== 4){
+  if(input.length !== 4){
     setMessage("Guesses must be exactly 4 characters long.");
     return false;
   }
@@ -49,9 +49,9 @@ function validateInput(input){
 function getResults(input){
   let a = "<div class='row'><span class='col-md-6'> " + input + "</span><div class='col-md-6'>";
   for(let i = 0; i < input.length; i++){
-    if(input.value.charAt(i) === answer.value.charAt(i)){
+    if(input.charAt(i) === answer.charAt(i)){
       a += "<span class='glyphicon glyphicon-ok'></span>";
-    }else if(answer.value.indexOf(input.value.charAt(i)) > -1){
+    }else if(answer.indexOf(input.charAt(i)) > -1){
       a += "<span class='glyphicon glyphicon-transfer'></span>";
     }else{
       a += "<span class='glyphicon glyphicon-remove'></span>";
@@ -66,7 +66,7 @@ function getResults(input){
     return false;
 }
 
-function showAnser(success){
+function showAnswer(success){
   let code = document.getElementById("code");
   if(success){
     code.className += " success"
