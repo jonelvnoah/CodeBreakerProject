@@ -29,7 +29,7 @@ function guess() {
 function setHiddenFields (){
   attempt.value = 0;
   answer.value = Math.floor(Math.random()*10000).toString();
-  while (answer.length < 4) {
+  while (answer.value.length < 4) {
     answer.value  = "0" + answer.value;
   }
 }
@@ -51,7 +51,7 @@ function getResults(input){
   for(let i = 0; i < input.length; i++){
     if(input.charAt(i) === answer.value.charAt(i)){
       a += "<span class='glyphicon glyphicon-ok'></span>";
-    }else if(answer.indexOf(input.charAt(i)) > -1){
+    }else if(answer.value.indexOf(input.charAt(i)) > -1){
       a += "<span class='glyphicon glyphicon-transfer'></span>";
     }else{
       a += "<span class='glyphicon glyphicon-remove'></span>";
