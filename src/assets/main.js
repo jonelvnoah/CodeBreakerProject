@@ -60,7 +60,7 @@ function getResults(input){
   a += "</div></div>";
   document.getElementById("results").innerHTML = a;
 
-  if(input.value === answer.value){
+  if(input === answer.value){
     return true;
   }
     return false;
