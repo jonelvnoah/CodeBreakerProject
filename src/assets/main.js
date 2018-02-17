@@ -4,7 +4,7 @@ let attempt = document.getElementById('attempt');
 function guess() {
     let input = document.getElementById('user-guess');
 
-    if(answer.value == "" || attempt.value == ""){
+    if(answer.value === "" || attempt.value === ""){
       setHiddenFields();
     }
 
@@ -39,7 +39,7 @@ function setMessage (message){
 }
 
 function validateInput(input){
-  if(input.value.length != 4){
+  if(input.value.length !== 4){
     setMessage("Guesses must be exactly 4 characters long.");
     return false;
   }
@@ -47,23 +47,23 @@ function validateInput(input){
 }
 
 function getResults(input){
-  let a = "<div class="row"><span class="col-md-6">' + input + '</span><div class="col-md-6">";
+  let a = "<div class='row'><span class='col-md-6'> " + input + "</span><div class='col-md-6'>";
   for(let i = 0; i < input.length; i++){
-    if(input.value.charAt(i) == answer.value.charAt(i)){
-      a += "<span class="glyphicon glyphicon-ok"></span>";
+    if(input.value.charAt(i) === answer.value.charAt(i)){
+      a += "<span class='glyphicon glyphicon-ok'></span>";
     }else if(answer.value.indexOf(input.value.charAt(i)) > -1){
-      a += "<span class="glyphicon glyphicon-transfer"></span>";
+      a += "<span class='glyphicon glyphicon-transfer'></span>";
     }else{
-      a += "<span class="glyphicon glyphicon-remove"></span>";
+      a += "<span class='glyphicon glyphicon-remove'></span>";
     }
   }
   a += "</div></div>";
   document.getElementById("results").innerHTML = a;
 
-  if(input.value == answer.value){
+  if(input.value === answer.value){
     return true;
   }
-    return fasle;
+    return false;
 }
 
 function showAnser(success){
